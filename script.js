@@ -4,7 +4,6 @@ window.onload = function () {
     document.getElementsByTagName("header")[0].style.position = "fixed";
 
     removeStartupAnimDivs();
-    // document.getElementById("light-dark-toggle").addEventListener("click", function () { toggleLightDarkMode() });
 }
 
 function removeStartupAnimDivs() {
@@ -13,9 +12,5 @@ function removeStartupAnimDivs() {
         document.getElementsByTagName("header")[0].style.position = "inherit";
         var animContainer = document.getElementById("start-animation-container");
         animContainer.parentNode.removeChild(animContainer);
-    }, 4500);
+    }, 3000);
 }
-
-// function toggleLightDarkMode() {
-//     console.log("Coming Soon");
-// }
