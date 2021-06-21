@@ -4,27 +4,14 @@
 /* Variables */
 :root {
     --transition: all 0.2s ease-in-out;
-    --border-radius: 3px;
+    --border-radius: 5px;
     --delay: 1s;
     
     /* Colours */
-    --white-colour: hsl(54, 21%, 91%);  /* #ecebe2 */
-    --aqua-colour: hsl(160, 63%, 60%); /* #57d9ad */
-    --black-colour: hsl(195, 22%, 14%); /* #1c282c */
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: var(--border-radius);
-    background-color: var(--aqua-colour);
-}
-
-::-webkit-input-placeholder {
-    color: var(--black-colour);
+    --white-colour: hsl(54, 21%, 91%);
+    --aqua-colour: hsl(160, 63%, 60%);
+    --dark-aqua-colour: hsl(195, 22%, 14%);
+    --black-colour: hsl(180, 5%, 4%, 0.4);
 }
 
 /* Global Styling */
@@ -34,59 +21,173 @@ html, body {
     margin: 0;
     padding: 0;
     border: 0;
-    overflow-x: hidden;
-    font-size: 16px;
     font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
     color: var(--white-colour);
-    background-color: var(--black-colour);
+    background-color: var(--dark-aqua-colour);
     user-select: none;
-    animation-delay: var(--delay);
 }
 
-main {
-    height: inherit;
-    margin: 0 auto;
-    font-size: 2em;
-    display: grid;
-    place-items: center;
-    place-content: center;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 header {
     width: 100%;
-    padding: 18px;
     border-top: var(--aqua-colour) 8px solid;
-    position: fixed;
+    padding: 20px 0px;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
     opacity: 0;
     animation: headerBar 0.5s forwards;
     animation-delay: calc(var(--delay) + 3s);
 }
 
     @keyframes headerBar {
-        from {
-            opacity: 0;
+        to {
+            opacity: 1;
+        }
+    }
+    
+    header #logo {
+        width: 50px;
+        height: 50px;
+        margin: 18px;
+    }
+
+    header #light-dark-toggle {
+        margin: 18px;
+    }
+    
+    header #light-dark-toggle:before {
+            cursor: pointer;
+            font-size: 1.5em;
+            content: "\01F313";
+        }
+    
+main {
+    width: 60%;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+    main #intro {
+        display: flex;
+        flex-wrap: wrap;
+        place-content: space-evenly;
+        opacity: 0;
+        animation: Appear 1s forwards;
+        animation-delay: calc(var(--delay) + 3.5s);
+    }
+
+#intro #content {
+    min-width: 200px;
+    display: inline-block;
+}
+    
+    #content h1 {
+        margin: 0px 0px 10px 0px;
+        text-transform: uppercase;
+        font-size: 2em;
+        letter-spacing: 0.05em;
+    }
+    
+        #content h1:before {
+            content: "\01F44B";
+        }
+    
+    #content h2 {
+        margin: 5px 0px;
+        font-size: 1.2em;
+        font-weight: 400;
+        letter-spacing: -0.1px;
+    }
+
+    #content nav {
+        margin-top: 30px;
+    }
+
+        #content nav a {
+            margin-right: 10px;
+        }
+            
+            #content nav a:last-child {
+                margin-right: 0px;
+            }
+        
+        #content nav i {
+            opacity: 0.7;
+            font-size: 2em;
+            transition: var(--transition);
         }
 
+            #content nav i:hover {
+                color: var(--aqua-colour);
+                opacity: 1;
+                cursor: pointer;
+            }
+
+    #intro #quote {
+        width: 10vw;
+        min-width: 240px;
+        max-width: 530px;
+        min-height: 100px;
+        float: right;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        background-color: var(--black-colour);
+        transition: var(--transition);
+    }
+    
+        #intro #quote #quote-author {
+            margin-top: 10px;
+            font-size: 0.8em;
+            text-align: right;
+        }
+
+#projects {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    opacity: 0;
+    animation: Appear 1s forwards;
+    animation-delay: calc(var(--delay) + 4.5s);
+}
+
+    @keyframes Appear {
         to {
             opacity: 1;
         }
     }
 
-    header #logo {
-        width: 50px;
-        height: 50px;
+/* TODO: Design project 'cards' */
+/* TODO: Make a better black colour first */
+    #projects .project {
+        max-width: 500px;
+        margin: 0px 10px 20px 0px;
+        display: inline-block;
+        border-radius: var(--border-radius);
     }
 
-#content {
-    opacity: 0;
-    visibility: hidden;
-    animation: contentAppear 1s forwards;
-    animation-delay: calc(var(--delay) + 4s);
+/* TODO: Dynamic image sizes (Mobile too) */
+.project .project-image {
+    object-fit: cover;
+    /* max-width: 400px; */
+    width: 100%;
+    /* height: 25vh; */
+    border-radius: var(--border-radius);
 }
 
-@keyframes contentAppear {
-    to {
-        opacity: 1;
-        visibility: visible;
-        }
+@media screen and (max-width: 800px) {
+    #intro #content {
+        text-align: center;
     }
+    
+    #intro #quote {
+        margin-top: 30px;
+    }
+}

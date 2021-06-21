@@ -1,21 +1,17 @@
 /* Loading animation styling */
 
 #start-animation-container {
-    height: 100%;
+    width: inherit;
+    height: inherit;
     display: grid;
     place-items: center;
     place-content: center;
     position: relative;
-    transform-origin: center center;
-    animation: fadeToTopLeft 1s forwards;
-    animation-delay: calc(var(--delay) + 2s);
+    animation: fadeOut 1s forwards;
+    animation-delay: calc(var(--delay) + 1.5s);
 }
 
-    @keyframes fadeToTopLeft {
-        from {
-            opacity: 1;
-        }
-
+    @keyframes fadeOut {
         to {
             opacity: 0;
         }
