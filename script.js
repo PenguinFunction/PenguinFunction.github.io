@@ -4,7 +4,7 @@ window.onload = function () {
     document.getElementsByTagName("header")[0].style.position = "fixed";
 
     removeStartupAnimDivs();
-    document.getElementById("light-dark-toggle").addEventListener("click", function () { toggleLightDarkMode() });
+    // document.getElementById("light-dark-toggle").addEventListener("click", function () { toggleLightDarkMode() });
 }
 
 function removeStartupAnimDivs() {
@@ -16,6 +16,6 @@ function removeStartupAnimDivs() {
     }, 4500);
 }
 
-function toggleLightDarkMode() {
-    console.log("Test");
-}
+// function toggleLightDarkMode() {
+//     console.log("Coming Soon");
+// }
