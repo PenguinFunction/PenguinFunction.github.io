@@ -70,7 +70,7 @@ header {
     }
 
     header #light-dark-toggle {
-        height: fit-content;
+        height: max-content;
         padding: 3px;
         margin: 18px 18px 0px 0px;
         border-radius: var(--border-radius);
@@ -126,7 +126,7 @@ main {
     }
 
         #content nav a {
-            width: fit-content;
+            width: max-content;
             padding: 10px;
             display: flex;
             align-items: center;
@@ -151,7 +151,7 @@ main {
         min-width: 240px;
         max-width: 530px;
         min-height: 100px;
-        height: fit-content;
+        height: max-content;
         padding: 20px;
         border-radius: var(--border-radius);
         background-color: hsl(var(--black-colour), 0.2);
