@@ -11,9 +11,9 @@
     <meta name="description" content="A website which showcases my projects" />
 
     <!-- External -->
-    <link href="penguinFunctionLogo.svg" type="image/svg" rel="icon">
-    <link href="style.css" rel="stylesheet" />
-    <link href="startAnim.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg" href="penguinFunctionLogo.svg">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="startAnim.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="script.js"></script>
 </head>
@@ -21,6 +21,7 @@
 <body>
     <header>
         <image id="logo" src="penguinFunctionLogo.png" alt="Penguin Function Logo" srcset="penguinFunctionLogo.svg" />
+        <a href="#" id="light-dark-toggle"></a>
     </header>
     <div id="start-animation-container">
         <image id="anim-logo" src="penguinFunctionLogo.png" alt="Penguin Function Logo"
@@ -37,19 +38,33 @@
                 <nav>
                     <a href="https://github.com/PenguinFunction">
                         <i class=" fa fa-github" aria-hidden="true"></i>
+                        <span>Github</span>
                     </a>
                 </nav>
             </div>
             <div id="quote">
                 <code>
-                    <em>"It probably already exists, but at least I made it."</em>
-                    <div id="quote-author">- Me while making these projects</div>
+                    <em>"It probably exists already, but at least I made it."</em>
+                    <div id="quote-author">-- Me while making these projects</div>
                 </code>
             </div>
         </div>
         <div id="projects">
             <div class="project">
-                
+                <div>
+                    <div class="title">Title</div>
+                    <div class="description">Description</div>
+                </div>
+                <div class="button-container">
+                    <a href="#" class="github-button">
+                        <i class=" fa fa-github" aria-hidden="true"></i>
+                        Github
+                    </a>
+                    <a href="#" class="demo-button">
+                        Demo
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </main>

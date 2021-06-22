@@ -4,14 +4,18 @@
 /* Variables */
 :root {
     --transition: all 0.2s ease-in-out;
-    --border-radius: 5px;
+    --border-radius: 7px;
     --delay: 1s;
     
     /* Colours */
-    --white-colour: hsl(54, 21%, 91%);
-    --aqua-colour: hsl(160, 63%, 60%);
-    --dark-aqua-colour: hsl(195, 22%, 14%);
-    --black-colour: hsl(180, 5%, 4%, 0.4);
+    --white-colour: 54, 21%, 91%;
+    --aqua-colour: 160, 63%, 60%;
+    --dark-aqua-colour: 195, 22%, 14%;
+    --black-colour: 180, 5%, 4%;
+}
+
+:focus {
+    outline: 2px solid hsl(var(--aqua-colour));
 }
 
 /* Global Styling */
@@ -24,19 +28,26 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
-    color: var(--white-colour);
-    background-color: var(--dark-aqua-colour);
+    color: hsl(var(--white-colour));
+    background-color: hsl(var(--dark-aqua-colour));
     user-select: none;
 }
 
 a {
-    color: inherit;
+    color: hsl(var(--white-colour));
     text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
 }
+
+    a:hover {
+        /* color: hsl(var(--aqua-colour)); */
+        box-shadow: 0px 0px 0px 2px hsl(var(--aqua-colour));
+    }
 
 header {
     width: 100%;
-    border-top: var(--aqua-colour) 8px solid;
+    border-top: hsl(var(--aqua-colour)) 8px solid;
     padding: 20px 0px;
     display: flex;
     overflow: hidden;
@@ -59,10 +70,13 @@ header {
     }
 
     header #light-dark-toggle {
-        margin: 18px;
+        height: fit-content;
+        padding: 3px;
+        margin: 18px 18px 0px 0px;
+        border-radius: var(--border-radius);
     }
     
-    header #light-dark-toggle:before {
+        header #light-dark-toggle:before {
             cursor: pointer;
             font-size: 1.5em;
             content: "\01F313";
@@ -85,13 +99,14 @@ main {
 
 #intro #content {
     min-width: 200px;
-    display: inline-block;
+    display: grid;
 }
     
     #content h1 {
         margin: 0px 0px 10px 0px;
         text-transform: uppercase;
-        font-size: 2em;
+        font-size: 2.3em;
+        font-weight: initial;
         letter-spacing: 0.05em;
     }
     
@@ -99,35 +114,36 @@ main {
             content: "\01F44B";
         }
     
-    #content h2 {
-        margin: 5px 0px;
-        font-size: 1.2em;
-        font-weight: 400;
-        letter-spacing: -0.1px;
-    }
+        #content h2 {
+            margin: 5px 0px;
+            font-size: 1.2em;
+            font-weight: initial;
+            letter-spacing: -0.3px;
+        }
 
     #content nav {
         margin-top: 30px;
     }
 
         #content nav a {
-            margin-right: 10px;
+            width: fit-content;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-radius: var(--border-radius);
+            background-color: hsl(var(--black-colour), 0.8);
         }
             
             #content nav a:last-child {
                 margin-right: 0px;
             }
-        
-        #content nav i {
-            opacity: 0.7;
-            font-size: 2em;
-            transition: var(--transition);
-        }
 
-            #content nav i:hover {
-                color: var(--aqua-colour);
-                opacity: 1;
-                cursor: pointer;
+            #content nav a i {
+                font-size: 2em;
+            }
+
+            #content nav a span {
+                margin-left: 10px;
             }
 
     #intro #quote {
@@ -135,15 +151,15 @@ main {
         min-width: 240px;
         max-width: 530px;
         min-height: 100px;
-        float: right;
+        height: fit-content;
         padding: 20px;
         border-radius: var(--border-radius);
-        background-color: var(--black-colour);
+        background-color: hsl(var(--black-colour), 0.2);
         transition: var(--transition);
     }
     
         #intro #quote #quote-author {
-            margin-top: 10px;
+            margin-top: 9px;
             font-size: 0.8em;
             text-align: right;
         }
@@ -151,8 +167,9 @@ main {
 #projects {
     width: 80%;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
+    place-content: space-evenly;
     opacity: 0;
     animation: Appear 1s forwards;
     animation-delay: calc(var(--delay) + 4.5s);
@@ -164,27 +181,64 @@ main {
         }
     }
 
-/* TODO: Design project 'cards' */
-/* TODO: Make a better black colour first */
     #projects .project {
-        max-width: 500px;
-        margin: 0px 10px 20px 0px;
-        display: inline-block;
+        min-width: 200px;
+        width: 250px;
+        height: 150px;
+        padding: 20px;
+        display: grid;
+        align-content: space-between;
+        border-radius: var(--border-radius);
+        background-color: hsl(var(--black-colour), 0.4);
+    }
+
+.project .title {
+    font-size: 1.2em;
+}
+
+.project .description {
+    font-size: 0.8em;
+    margin-top: 10px;
+} 
+
+.project .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+}
+
+    .project .button-container .github-button,
+    .project .button-container .demo-button {
+        padding: 10px;
+        cursor: pointer;
         border-radius: var(--border-radius);
     }
 
-/* TODO: Dynamic image sizes (Mobile too) */
-.project .project-image {
+        .button-container .github-button {
+            background-color: hsl(var(--black-colour), 0.2);
+        }
+
+        .button-container i {
+            font-size: 1.2em;
+        }
+    
+        .button-container .demo-button {
+            color: hsl(var(--aqua-colour));
+            background-color: hsl(var(--black-colour), 0.8);
+        }
+
+/* .project .image {
     object-fit: cover;
-    /* max-width: 400px; */
+    max-width: 400px;
     width: 100%;
-    /* height: 25vh; */
+    height: 25vh;
     border-radius: var(--border-radius);
-}
+} */
 
 @media screen and (max-width: 800px) {
     #intro #content {
-        text-align: center;
+        place-items: center;
     }
     
     #intro #quote {
