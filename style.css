@@ -14,10 +14,6 @@
     --black-colour: 180, 5%, 4%;
 }
 
-:focus {
-    outline: 2px solid hsl(var(--aqua-colour));
-}
-
 /* Global Styling */
 html, body {
     width: 100%;
@@ -41,7 +37,6 @@ a {
 }
 
     a:hover {
-        /* color: hsl(var(--aqua-colour)); */
         box-shadow: 0px 0px 0px 2px hsl(var(--aqua-colour));
     }
 
@@ -81,6 +76,22 @@ header {
             font-size: 1.5em;
             content: "\01F313";
         }
+
+        header #light-dark-toggle:hover + div {
+            opacity: 1;
+        }
+        
+    header #coming-soon {
+        padding: 10px;
+        margin: 18px 78px 0px 0px;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        background-color: hsl(var(--black-colour), 0.8);
+        border-radius: var(--border-radius);
+        box-shadow: 0px 0px 0px 2px hsl(var(--aqua-colour));
+        transition: var(--transition);
+    }
     
 main {
     width: 60%;
@@ -157,6 +168,10 @@ main {
         background-color: hsl(var(--black-colour), 0.2);
         transition: var(--transition);
     }
+
+        #intro #quote em {
+            font-size: 0.9em;
+        }
     
         #intro #quote #quote-author {
             margin-top: 9px;
@@ -165,10 +180,10 @@ main {
         }
 
 #projects {
-    width: 80%;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 70px;
     display: flex;
+    flex-wrap: wrap;
     place-content: space-evenly;
     opacity: 0;
     animation: Appear 1s forwards;
@@ -186,6 +201,7 @@ main {
         width: 250px;
         height: 150px;
         padding: 20px;
+        margin: 0px 20px 20px 0px;
         display: grid;
         align-content: space-between;
         border-radius: var(--border-radius);
@@ -203,6 +219,7 @@ main {
 
 .project .button-container {
     width: 100%;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     place-items: center;
@@ -216,8 +233,13 @@ main {
     }
 
         .button-container .github-button {
-            background-color: hsl(var(--black-colour), 0.2);
+            color: hsl(var(--white-colour), 0.8);
+            background-color: hsl(var(--black-colour));
         }
+
+            .button-container .github-button:hover {
+                color: hsl(var(--white-colour), 1);
+            }
 
         .button-container i {
             font-size: 1.2em;
@@ -225,7 +247,7 @@ main {
     
         .button-container .demo-button {
             color: hsl(var(--aqua-colour));
-            background-color: hsl(var(--black-colour), 0.8);
+            background-color: hsl(var(--black-colour));
         }
 
 /* .project .image {
@@ -236,7 +258,7 @@ main {
     border-radius: var(--border-radius);
 } */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 799px) {
     #intro #content {
         place-items: center;
     }
